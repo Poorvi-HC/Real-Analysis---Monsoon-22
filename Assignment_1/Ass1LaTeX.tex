@@ -1,0 +1,966 @@
+% \documentclass[12pt]{article}
+% \usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Packages
+\documentclass[12pt, a4paper]{article}
+\usepackage[top=3cm, bottom=4cm, left=3.5cm, right=3.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd, fancyhdr, color, comment, graphicx, environ}
+\usepackage{float}
+\usepackage{mathrsfs}
+\usepackage[math-style=ISO]{unicode-math}
+% \setmathfont{TeX Gyre Termes Math}
+\usepackage{lastpage}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{sectsty}
+\usepackage{thmtools}
+\usepackage{shadethm}
+\usepackage{hyperref}
+\usepackage{setspace}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Environment setup
+\mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+\newrobustcmd\ExampleText{%
+An \textit{inhomogeneous linear} differential equation has the form
+\begin{align}
+L[v ] = f,
+\end{align}
+where $L$ is a linear differential operator, $v$ is the dependent
+variable, and $f$ is a given non−zero function of the independent
+variables alone.
+}
+
+\mdtheorem[style=theoremstyle]{Problem}{Problem}
+\newenvironment{Solution}{\textbf{Solution.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}     
+\newcommand\course{Course}                      % <-- course name   
+\newcommand\hwnumber{1}                         % <-- homework number
+\newcommand\Information{XXX/xxxxxxxx}           % <-- personal information
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Page setup
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\cfoot{\small\thepage}
+\rfoot{}
+\headsep 1.2em
+\renewcommand{\baselinestretch}{1.25}       
+\mdfdefinestyle{theoremstyle}{%
+linecolor=black,linewidth=1pt,%
+frametitlerule=true,%
+frametitlebackgroundcolor=gray!20,
+innertopmargin=\topskip,
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Add new commands here
+\renewcommand{\labelenumi}{\alph{enumi})}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\NN}{\mathbb N}
+\DeclareMathOperator{\Mod}{Mod} 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Begin now!
+
+\begin{document}
+
+\title{Assignment-1}
+\author{Poorvi H C}
+\date{August 2022}
+
+
+\maketitle
+
+\section{Question 1}
+
+\begin{Problem}
+    Q1. For set A, B show that the statements
+    \(A \subseteq B , A \cup B = B, A \cap B = A\) are equivalent.
+\end{Problem}
+
+\begin{Solution}
+
+1. To prove \(A \subseteq B\) and \(A \cup B = B\) are equivalent.
+
+Suppose \(A \subseteq B\),
+
+if \(x \in A \cup B\); then \(x \in A \vee x \in B\)
+if \(x \in A\) then by assumption above \(x \in B\) as well. Hence, \(A \cup B \subseteq B\).
+
+if \(x \in B\); then \(x \in A \cup B\) hence \(B \subseteq A \cup B\). Hence, \(A \cup B = B\).
+
+Suppose \(A \cup B = B\),
+
+if \(x \in A\); then, \(x \in A \cup B\), which implies \(x \in B\).
+Hence, \(A \subseteq B\)
+
+\vspace{5mm} 
+
+2. To prove \( A \subseteq B \) and \(A \cap B = A\) are equivalent.
+
+Suppose \(A \subseteq B\),
+
+if \(x \in A \cap B\); then \(x \in A \wedge x \in B\); that is \(x\in B\) and \(x \in A\). Hence, \(A \cap B \subseteq A\)
+
+if \(x \in A\); then \(x \in B\) from our assumption; \(x \in A \wedge x \in B\) and \(x \in A \cap B\), hence, \(A \subseteq A \cap B\)
+
+Hence, \(A \cap B = A\)
+
+Suppose \(A \cap B = A\),
+
+if \(x\in A\cap B\) our assumption implies that \(x\in A\), which means every element which belongs to A also belongs to B, hence, \(A\subseteq B\)
+
+\vspace{5mm}
+
+According to the transitive equality law, which states that "If a = b and b = c, this implies that a = c" as equality is an equivalence relation. Similarly, equivalency is a equivalence relation, as it is reflexive, transitive and symmetric, therefore, as (b) is equivalent to (a) and (a) is equivalent to (c), then this implies that (b) is equivalent to (c). 
+
+Hence, we have proved that the statements \(A \subseteq B , A \cup B = B, A \cap B = A\) are equivalent.
+
+\end{Solution}
+\newpage
+\section{Question 2}
+\begin{Problem}
+    Q2. Establish the following theoretical relations:\
+    \begin{enumerate}
+        \item \(A\cup B = B\cup A\) and \(A\cap B = B\cap A\) (commutativity law)
+        \item \(A \cup (B \cup C) = (A \cup B) \cup C\) and \(A \cap (B \cap C) = (A \cap B) \cap C\) (Associativity)
+        \item \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\) and \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\) (Distributivity principle)
+        \item \(A \subseteq B \Leftrightarrow B^c \subseteq A^c\)
+        \item \(A\setminus B = A\cap B^c\)
+        \item \((A \cup B)^c = A^c \cap B^c\) and \((A\cap B)^c = A^c \cup B^c\) (De - Morgan's Law)
+    \end{enumerate}
+\end{Problem}
+
+\begin{Solution}
+
+Let \(x\in A\cup B\); then, \(x\in A \vee x\in B\) which can also be written as \(x \in B \vee x\in A\); then \(x\in B\cup A\), implying that \(A\cup B \subseteq B\cup A\).
+
+Let \(x\in B\cup A\); then \(x \in B \vee x\in A\) which can also be written as \(x\in A \vee x\in B\); then \(x\in A\cup B\), implying that \(B\cup A \subseteq A\cup B\).
+
+Hence, \( A\cup B = B\cup A\).
+\vspace{5mm}
+
+Let \(x\in A\cap B\); then, \(x\in A \wedge x\in B\) which can also be written as \(x \in B \wedge x\in A\); then \(x\in B\cap A\), implying that \(A\cap B \subseteq B\cap A\).
+
+Let \(x\in B\cap A\); then \(x \in B \wedge x\in A\) which can also be written as \(x\in A \wedge x\in B\); then \(x\in A\cap B\), implying that \(B\cap A \subseteq A\cap B\).
+
+Hence, \(A\cap B = B\cap A\).
+
+\vspace{5mm}
+\end{Solution}
+
+\begin{Solution}
+
+
+Let \(x\in A \cup (B\cup C)\); then \(x\in A \vee x\in (B \cup C)\), on further splitting, \(x\in A \vee x\in B \vee x\in C\). As \(\vee\) or 'or' operator is associative, we group the first 2 relations. \((x\in A \vee x\in B) \vee x \in C\), on combining the groups individually, \(x\in(A\cup B) \cup C\). Hence, \(A\cup (B\cup C) \subseteq (A\cup B)\cup C\).
+
+Let \(x\in(A\cup B) \cup C\); then \((x\in A \cup B) \vee x \in C\), on further splitting, \(x\in A \vee x\in B \vee x\in C\). As \(\vee\) or 'or' operator is associative, we group the last 2 relations. \(x\in A \vee (x\in B \vee x\in C)\), on combining the groups individually, \(x\in A \cup (B\cup C)\). Hence, \((A\cup B) \cup C \subseteq A\cup (B\cup C)\).
+
+Hence, \(A \cup (B \cup C) = (A \cup B) \cup C\).
+
+\vspace{5mm}
+
+Let \(x\in A \cap (B\cap C)\); then \(x\in A \wedge x\in (B \cap C)\), on further splitting, \(x\in A \wedge x\in B \wedge x\in C\). As \(\wedge\) or 'and' operator is associative, we group the first 2 relations. \((x\in A \wedge x\in B) \wedge x \in C\), on combining the groups individually, \(x\in(A\cap B) \cap C\). Hence, \(A\cap (B\cap C) \subseteq (A\cap B)\cap C\).
+
+Let \(x\in(A\cap B) \cap C\); then \((x\in A \wedge x\in B) \wedge x \in C\), on further splitting, \(x\in A \wedge x\in B \wedge x\in C\). As \(\wedge\) or 'and' operator is associative, we group the last 2 relations. \(x\in A \wedge (x\in B \wedge x\in C)\), on combining the groups individually, \(x\in A \cap (B\cap C)\). Hence,
+\((A\cap B) \cap C \subseteq A\cap (B\cap C)\).
+
+Hence, \(A \cap (B \cap C) = (A \cap B) \cap C\).
+
+\vspace{5mm}
+
+\end{Solution}
+
+\begin{Solution}
+
+Let \(x\in A\cup (B\cap C)\) 
+
+\(\Rightarrow x\in A \vee (x\in B\wedge x\in C)\)
+
+\(\Rightarrow (x\in A \vee x\in B) \wedge (x\in A \vee x\in C)\) (Based on distributive law of logical operators, 'or' and 'and)
+
+\(\Rightarrow (x\in (A\cup B)) \wedge (x\in (A\cup C)\)
+
+\(\Rightarrow x\in (A\cup B) \cap (A\cup C)\)
+
+Hence,\(A \cup (B \cap C) \subseteq ((A\cup B) \cap (A\cup C))\).
+
+\vspace{5mm}
+
+Let \(x\in (A\cup B) \cap (A\cup C)\),
+
+\(\Rightarrow (x\in (A\cup B)) \wedge (x\in (A\cup C))\)
+
+\(\Rightarrow (x\in A \vee x\in B) \wedge (x\in A \vee x\in C)\)
+
+\(\Rightarrow x\in A \vee (x\in B\wedge x\in C)\) (Reverse of the distributive law of logical operators)
+
+\(\Rightarrow x\in A\cup (B\cap C)\) 
+
+Hence,\(((A\cup B) \cap (A\cup C)) \subseteq A \cup (B \cap C)\).
+
+Hence, \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)
+
+\vspace{10mm}
+
+Let \(x\in A\cap (B\cup C)\) 
+
+\(\Rightarrow x\in A \wedge (x\in B\vee x\in C)\)
+
+\(\Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C)\) (Based on distributive law of logical operators, 'or' and 'and)
+
+\(\Rightarrow (x\in (A\cap B)) \vee (x\in (A\cap C)\)
+
+\(\Rightarrow x\in (A\cap B) \cup (A\cap C)\)
+
+Hence, \(A \cap (B \cup C) \subseteq ((A\cap B) \cup (A\cap C))\).
+
+\vspace{5mm}
+
+Let \(x\in (A\cap B) \cup (A\cap C)\),
+
+\(\Rightarrow (x\in (A\cap B)) \vee (x\in (A\cap C))\)
+
+\(\Rightarrow (x\in A \wedge x\in B) \vee (x\in A \wedge x\in C)\)
+
+\(\Rightarrow x\in A \wedge (x\in B\vee x\in C)\) (Reverse of the distributive law of logical operators)
+
+\(\Rightarrow x\in A\cap (B\cup C)\) 
+
+Hence, \(((A\cap B) \cup (A\cap C)) \subseteq A \cap (B \cup C)\).
+
+Hence, \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)
+
+\vspace{5mm}
+
+\end{Solution}
+
+\begin{Solution}
+
+Suppose \( A\subseteq B\),
+
+This means if \(x\in A\)  it implies that \(x \in B\) and vice versa maybe or may not be true.
+
+Let U represent the universal set, that encompasses all the other possible sets.
+
+\(A^c = U \setminus A\) and \(B^c = U\setminus B\).
+
+Let \(x\in B^c\)
+
+\(\Rightarrow x\in U \setminus B\)
+
+\(\Rightarrow x\in U \wedge x\not\in B\)
+
+\(\Rightarrow x\in U \wedge x\not\in A\)
+
+(as \(x\in A \Rightarrow x\in B\) similarly, \(x\not\in B \Rightarrow x\not\in A\) as all elements of A are a part of B, if x is not a part of B it naturally implies, x is not a part of A.)
+
+\(\Rightarrow x\in U \setminus A\)
+
+\(\Rightarrow x \in A^c\)
+
+Hence, \(B^c \subseteq A^c\).
+
+\vspace{5mm}
+
+Suppose \(B^c \subseteq A^c\),
+
+Let \(x \in A\),
+
+\(\Rightarrow x\not\in A^c\)
+
+x is not in \(A^c\), based on our assumption x is not in \(B^c\) as well. As All elements of \(B^c\) are a part of \(A^c\).
+
+\(\Rightarrow x\not\in B^c\)
+
+\(\Rightarrow x\in B\)
+
+if x is not in B's complement it must belong to B then.
+
+Hence, \(A\subseteq B\).
+
+Therefore, we have shown that \(A \subseteq B \Leftrightarrow B^c \subseteq A^c\).
+
+\vspace{5mm}
+
+\end{Solution}
+
+\begin{Solution}
+
+Let \(x\in A\setminus B\),
+
+\(\Rightarrow x\in A \wedge x\not\in B\)
+
+\(\Rightarrow x\in A \wedge x\in B^c\)
+
+\(B^c\) is the set complement to the set B, i.e., all the other \(x\in U\), U is the universal set,  which do not belong to set B.
+
+\(\Rightarrow x\in (A \cap B^c)\)
+
+Hence, \(A\setminus B \subseteq (A\cap B^c)\)
+
+\vspace{5mm}
+
+Let \(x \in (A \cap B^c)\),
+
+\(\Rightarrow x\in A \wedge x\in B^c\)
+
+\(\Rightarrow x\in A \wedge x\not\in B\)
+
+as \(B^c\) does not include any of the values in B. The 2 sets are disjoint.
+
+\(\Rightarrow x\in A \setminus B\)
+
+Hence, \((A\cap B^c) \subseteq A\setminus B\).
+
+Therefore we have proved, \(A\setminus B = A\cap B^c\).
+
+\vspace{5mm}
+
+\end{Solution}
+
+\begin{Solution}
+
+Let \(x\in (A\cup B)^c \), 
+
+\(\Rightarrow x\not\in (A\cup B)\)
+
+\(\Rightarrow (x\not\in A) \wedge (x \not\in B)\)
+
+(Based, on the de-morgan law application to logical operator).
+
+\(\Rightarrow (x \in A^c) \wedge (x \in B^c)\)
+
+\(\Rightarrow (x \in (A^c \cap B^c))\)
+
+\(\Rightarrow (A\cup B)^c \subseteq (A^c \cap B^c)\)
+
+\vspace{5mm}
+
+Let \(x \in (A^c \cap B^c)\),
+
+\(\Rightarrow x\in A^c \wedge x\in B^c\)
+
+\(\Rightarrow x \not\in A \wedge x \not\in B\)
+(reverse of demorgans law of logical operators)
+
+\(\Rightarrow x \not\in (A \cup B)\)
+
+\(\Rightarrow x \in (A \cup B)^c\)
+
+\(\Rightarrow (A^c \cap B^c) \subseteq (A \cup B)^c\)
+
+Hence, \((A \cup B)^c = A^c \cap B^c\)
+
+\vspace{5mm}
+
+Let \(x\in (A\cap B)^c \), 
+
+\(\Rightarrow x\not\in (A\cap B)\)
+
+\(\Rightarrow (x\not\in A) \vee (x \not\in B)\)
+
+(Based, on the de-morgan law application to logical operator).
+
+\(\Rightarrow (x \in A^c) \vee (x \in B^c)\)
+
+\(\Rightarrow (x \in (A^c \cup B^c))\)
+
+\(\Rightarrow (A\cap B)^c \subseteq (A^c \cup B^c)\)
+
+\vspace{5mm}
+
+Let \(x \in (A^c \cup B^c)\),
+
+\(\Rightarrow x\in A^c \vee x\in B^c\)
+
+\(\Rightarrow x \not\in A \wedge x \not\in B\)
+(reverse of demorgans law of logical operators)
+
+\(\Rightarrow x \not\in (A \cap B)\)
+
+\(\Rightarrow x \in (A \cap B)^c\)
+
+\(\Rightarrow (A^c \cup B^c) \subseteq (A \cap B)^c\)
+
+Hence, \((A \cap B)^c = A^c \cup B^c\)
+
+\vspace{5mm}
+
+\end{Solution}
+\newpage
+
+\section{Question 3}
+\begin{Problem}
+
+Q3. Give a necessary and sufficient condition for the cartesian product of 2 sets be commutative.\(A\times B = B\times A\)
+
+\end{Problem}
+
+\begin{Solution}
+
+\(A = (a_1,\ldots, a_n)\)
+
+\(B = (b_1, \ldots, b_m)\)
+
+\(A \times B = (\cup_{i=0}^{n}\cup_{j=0}^{m}(a_i, b_j))\)
+
+\(B \times A = (\cup_{j=0}^{m}\cup_{i=0}^{n}(b_j,a_i))\)
+
+If 2 sets are equal:
+\begin{enumerate}
+    \item The number of elements in both should be the same.
+    \item The Elements must all be identical.
+\end{enumerate}
+Based on (a), we know that the cartesian product set of 2 sets has \(m\times n\) elements where m = cardinality of the first set and n = cardinality of the second set.
+
+Therefore \(|A\times B| = (n\times m)\),
+and \(|B \times A| = (m \times n)\)
+
+Both the cardinalities are identical, satisfies the first condition.
+
+We know all elements must be equal, 
+
+hence if \((a_i , b_j)\) are identical to \((b_j, a_i)\), all elements of B must exist in A , i.e, \(B \subseteq A\) and all elements of A must exist in B, i.e., \(A \subseteq B\), hence, The elements in set A must be identical to set B and viceversa. 
+
+Therefore, for the cartesian products to be sets with identical elements, a necessary condition is \(A = B\). 
+
+The first (a) is also true if A = B, as the cardinality of both the cartesian products will be \(n^2\), if n = cardinality of either sets.
+
+Also if either of the set is empty, The \(A\times B\) and \(B\times A\) set will also be empty, hence will also be equal. 
+
+Therefore, if \(A = B\) or either of the sets is empty, \(A\times B = B\times A\).
+
+\end{Solution}
+\newpage
+
+\section{Question 4}
+\begin{Problem}
+    Q4. If A,B,C are sets, show that
+    \begin{enumerate}
+        \item \(A \times B = \emptyset\) \Leftrightarrow \(A = \emptyset\) or \(B = \emptyset\)
+        \item \((A \cup B) \times C = (A\times C) \cup (B \times C)\)
+        \item \((A\cap B )\times C = (A\times C) \cap (B \times C)\)
+    \end{enumerate}
+\end{Problem}
+
+\begin{Solution}
+
+Cardinality of cartesian product \(|A \times B| = |A| \times |B|\).
+
+if \( A\times B = \emptyset\), 
+
+\(\Rightarrow |A \times B| = |\emptyset| = 0\)
+
+\(\Rightarrow |A| \times |B| = 0\)
+
+\(\Rightarrow |A| = 0\) or \(|B| = 0\)
+
+\(\Rightarrow A = \emptyset\) or \(B = \emptyset\)
+
+Hence, \(A \times B = \emptyset\) \rightarrow \(A = \emptyset\) or \(B = \emptyset\).
+
+\vspace{5mm}
+
+if \(A = \emptyset\) or \(B = \emptyset\)
+
+\(\Rightarrow |A| = 0\) or \(|B| = 0\)
+
+\(\Rightarrow |A| \times |B| = 0\)
+
+\(\Rightarrow |A \times B| = |\emptyset| = 0\)
+
+\(\Rightarrow A\times B = \emptyset\)
+
+Hence, \(A = \emptyset\) or \(B = \emptyset\) \rightarrow \(A \times B = \emptyset\).
+
+Hence its proven that, \(A \times B = \emptyset\) \Leftrightarrow \(A = \emptyset\) or \(B = \emptyset\)
+
+\end{Solution}
+
+\vspace{5mm}
+
+\begin{Solution}
+
+if \((x,y) \in (A\cup B)\times C,\)
+
+\(\Rightarrow x \in (A \cup B) \wedge y \in C\)
+
+\(\Rightarrow (x \in A \vee x\in B) \wedge y\in C\)
+
+Applying distributive property of logical operators,
+
+\(\Rightarrow ((x \in A \wedge y \in C) \vee (x \in B \wedge y \in C)) \)
+
+\(\Rightarrow (((x,y) \in A \times C) \vee ((x,y) \in B \times C))\)
+
+\(\Rightarrow (x,y) \in (A\times C) \cup (B \times C)\)
+
+Hence, \((A \cup B) \times C \subseteq (A\times C) \cup (B \times C)\)
+
+\vspace{5mm}
+
+If \((x,y) \in (A\times C) \cup (B \times C)\),
+
+\(\Rightarrow (((x,y) \in A \times C) \vee ((x,y) \in B \times C))\)
+
+\(\Rightarrow ((x \in A \wedge y \in C) \vee (x \in B \wedge y \in C)) \)
+
+Applying reverse of distributive property,
+
+\(\Rightarrow (x \in A \vee x\in B) \wedge y\in C\)
+
+\(\Rightarrow x \in (A \cup B) \wedge y \in C\)
+
+\(\Rightarrow (x,y) \in (A\cup B)\times C,\)
+
+Hence, \((A\times C) \cup (B \times C) \subseteq (A \cup B) \times C\)
+
+Therefore, \((A \cup B) \times C = (A\times C) \cup (B \times C)\)
+
+\vspace{5mm}
+
+\end{Solution}
+
+\begin{Solution}
+
+if \((x,y) \in (A\cap B)\times C,\)
+
+\(\Rightarrow x \in (A \cap B) \wedge y \in C\)
+
+\(\Rightarrow (x \in A \wedge x\in B) \wedge y\in C\)
+
+As the operators are identical, we can add another \(\wedge\) operator and group the 2 seperately.
+
+\(\Rightarrow ((x \in A \wedge y \in C) \wedge (x \in B \wedge y \in C)) \)
+
+\(\Rightarrow (((x,y) \in A \times C) \wedge ((x,y) \in B \times C))\)
+
+\(\Rightarrow (x,y) \in (A\times C) \cap (B \times C)\)
+
+Hence, \((A \cap B) \times C \subseteq (A\times C) \cap (B \times C)\)
+
+\vspace{5mm}
+
+If \((x,y) \in (A\times C) \cap (B \times C)\),
+
+\(\Rightarrow (((x,y) \in A \times C) \wedge ((x,y) \in B \times C))\)
+
+\(\Rightarrow ((x \in A \wedge y \in C) \wedge (x \in B \wedge y \in C)) \)
+
+As all the operators are identical, we can remove the additional \(\wedge\) C operation as it has already been included once, and it doesn't alter the result.
+
+\(\Rightarrow (x \in A \wedge x\in B) \wedge y\in C\)
+
+\(\Rightarrow x \in (A \cap B) \wedge y \in C\)
+
+\(\Rightarrow (x,y) \in (A\cap B)\times C,\)
+
+Hence, \((A\times C) \cap (B \times C) \subseteq (A \cap B) \times C\)
+
+Therefore, \((A \cap B) \times C = (A\times C) \cap (B \times C)\)
+
+\end{Solution}
+\newpage
+
+\section{Question 5}
+
+\begin{Problem}
+    Suppose \(f:A \rightarrow B\) and \(g: B \rightarrow C\), show that,
+    \begin{enumerate}
+        \item If both \(f\) and \(g\) are one-one, then \(g \circ f\) is one-one.
+        \item If both \(f\) and \(g\) are onto, then \(g\circ f \) is onto.
+        \item If both \(f\) and \(g\) are bijective, then \(g\circ f\) is bijective.
+    \end{enumerate}
+\end{Problem}
+
+\begin{Solution}
+
+    A function \(f\) is one-one, if  \(f(x_1) = f(x_2) \implies x_1 = x_2\),
+    
+    As \(f\) and \(g\) are one-one, the above axiom applies to those functions.
+    
+    A function \(g\circ f = g(f(x))\),
+    
+    If we prove, \(g \circ f(x_1) = g \circ f(x_2) \implies x_1 = x_2\) we have proven the above statement.
+    
+    Let, \( g \circ f(x_1) = g \circ f(x_2)\)
+    
+    \(\implies g(f(x_1)) = g(f(x_2))\)
+    
+    \(\implies f(x_1) = f(x_2)\) 
+    (As, g(x_1) = g(x_2) \implies x_1 = x_2)
+    
+    \(\implies x_1 = x_2\) 
+    (As, f(x_1) = f(x_2) \implies x_1 = x_2)
+    
+    This, therefore is proof the statement (a), i.e, If both \(f\) and \(g\) are one-one, then \(g \circ f\) is one-one.
+    
+\end{Solution}
+
+\vspace{5mm}
+
+\begin{Solution}
+    
+    If a function \(f: A\rightarrow B\) is onto, the set of all \( f(x)\) is equal to the codomain B.
+    
+    As \(f\) and \(g\) are onto, the above axiom applies to those functions.
+    
+    As \(g: B \rightarrow C\) is onto
+    
+    Let \(z\in C\), then there exist a pre-image in B (definition of onto function)
+    
+    Let pre-image be y, therefore, \(y\in B\) such that \(g(y) = z\)
+    
+    Similarly, since \(f: A \rightarrow B\) is onto
+    
+    If \(y\in B\), then there exist a pre-image in A
+    
+    Let that pre-image be x, therefore \(x\in A\) such that \(f(x) = y\) 
+    
+    Now, \(g \circ f : A \rightarrow C\)
+    
+    \( \implies g \circ f= g(f(x))\)
+    
+    \(\implies = g(y)\)
+    
+    \(\implies = z\)
+    
+    So, for every \(x \in A\), there is an image \(z\in C\).
+    
+    Hence, \(g \circ f\) is also onto.
+    
+    Hence, proven.
+    
+    % A function \(g\circ f = g(f(x))\),
+    % Range of \(f\) is the domain of \(g\), therefore, the overall range of \(g\circ f\) is equal to the range of \(g\). and the domain of \(g\circ f\) is equal to the domain of \(f\).
+    
+    % Hence, \(g\circ f: A \rightarrow C\).
+    
+    % for \(x\in A\),
+    % \(Range(f(x)) = B\).
+    % as \(f(x)\) is the input for function \(g\), the domain covers all elements in B.
+    
+    % As \(g\) is an onto function the \(Range(g(f(x))) = C\).
+    
+    % As \(Range(g \circ f(x)) = C\),
+    % we have proven that \(g \circ f\) is onto.
+    
+    % Hence, If both \(f\) and \(g\) are onto, then \(g\circ f \) is onto.
+\end{Solution}
+
+\vspace{5mm}
+
+\begin{Solution}
+
+    If a function \(f\) is bijective, it is both one-one and onto.
+    
+    A function \(f\) is one-one, if  \(f(x_1) = f(x_2) \implies x_1 = x_2\),
+    
+    As \(f\) and \(g\) are one-one, the above axiom applies to those functions.
+    
+    A function \(g\circ f = g(f(x))\),
+    
+    If we prove, \(g \circ f(x_1) = g \circ f(x_2) \implies x_1 = x_2\) we have proven the above statement.
+    
+    Let, \( g \circ f(x_1) = g \circ f(x_2)\)
+    
+    \(\implies g(f(x_1)) = g(f(x_2))\)
+    
+    \(\implies f(x_1) = f(x_2)\) 
+    (As, g(x_1) = g(x_2) \implies x_1 = x_2)
+    
+    \(\implies x_1 = x_2\) 
+    (As, f(x_1) = f(x_2) \implies x_1 = x_2)
+    
+    This, therefore is proof the statement (a), i.e, If both \(f\) and \(g\) are one-one, then \(g \circ f\) is one-one.
+     
+    If a function \(f: A\rightarrow B\) is onto, the set of all \( f(x)\) is equal to the codomain B.
+    
+    As \(f\) and \(g\) are onto, the above axiom applies to those functions.
+    
+    As \(g: B \rightarrow C\) is onto
+    
+    Let \(z\in C\), then there exist a pre-image in B (definition of onto function)
+    
+    Let pre-image be y, therefore, \(y\in B\) such that \(g(y) = z\)
+    
+    Similarly, since \(f: A \rightarrow B\) is onto
+    
+    If \(y\in B\), then there exist a pre-image in A
+    
+    Let that pre-image be x, therefore \(x\in A\) such that \(f(x) = y\) 
+    
+    Now, \(g \circ f : A \rightarrow C\)
+    
+    \( \implies g \circ f= g(f(x))\)
+    
+    \(\implies = g(y)\)
+    
+    \(\implies = z\)
+    
+    So, for every \(x \in A\), there is an image \(z\in C\).
+    
+    Hence, \(g \circ f\) is also onto.
+
+    % If a function \(f: A\rightarrow B\) is onto, the set of all \( f(x)\) is equal to the codomain B.
+    
+    % As \(f\) and \(g\) are onto, the above axiom applies to those functions.
+    
+    % A function \(g\circ f = g(f(x))\),
+    % Range of \(f\) is the domain of \(g\), therefore, the overall range of \(g\circ f\) is equal to the range of \(g\). and the domain of \(g\circ f\) is equal to the domain of \(f\).
+    
+    % Hence, \(g\circ f: A \rightarrow C\).
+    
+    % for \(x\in A\),
+    % \(Range(f(x)) = B\).
+    % as \(f(x)\) is the input for function \(g\), the domain covers all elements in B.
+    
+    % As \(g\) is an onto function the \(Range(g(f(x))) = C\).
+    
+    % As \(Range(g \circ f(x)) = C\),
+    % we have proven that \(g \circ f\) is onto.
+    
+    Hence, If both \(f\) and \(g\) are onto, then \(g\circ f \) is onto.
+    
+    As \(g \circ f\) is one-one and onto, it is a bijective function.
+\end{Solution}
+\newpage
+
+\section{Question 6}
+
+\begin{Problem}
+    For a function \(f: X \rightarrow Y\), show that the following statements are equivalent:
+    \begin{enumerate}
+        \item \(f\) is one-one
+        \item \(f(A \cap B) = f(A) \cap f(B)\) holds for all \(A,B \in P(X)\) 
+    \end{enumerate}
+\end{Problem}
+
+\begin{Solution}
+    Let a function \(f\) be one-one, i.e., if \(f(x_1) = f(x_2) \implies x_1 = x_2\).
+    
+    \( A\) and \(B = \) subset of domain X. 
+    
+    \(A = (a_1, \ldots, a_n)\)
+    
+    \(B = (b_1, \ldots, b_m)\)
+    
+    \( f(A) = \{\, f(x) \mid x \in A\,\}\), \( f(A) \subseteq Y\)
+    
+    \( f(B) = \{\, f(y) \mid y \in B\,\}\), \(f(B) \subseteq Y\)
+    
+    \( f(A \cap B) = \{\, f(k) \mid k \in A \wedge k \in B\,\}\)
+    
+    As f is one-one, for every unique set of inputs you get a unique set of outputs whose cardinality is the number of inputs one initially put in, as each input gives rise to a unique image.
+    
+    if \(m \in f(A \cap B)\), \(m = f(k)\) where \(k \in A \wedge k \in B\).
+    
+    if \( k \in A\), \(m \in f(A)\) \(\wedge\) if \(k \in B\), \(m \in f(B)\)
+    
+    if \(k \in A \wedge k \in B\), \(m \in f(A) \wedge m \in f(B)\)
+    
+    \(\implies m \in (f(A) \cap f(B))\)
+    
+    \(\implies f(A \cap B) \subseteq (f(A) \cap f(B))\)
+    
+    \vspace{5mm}
+    
+    if \( m \in f(A) \cap f(B)\),
+    
+    \( \implies m \in f(A) \wedge m \in f(B)\)
+    
+    \(\implies\) as \(f\) is one-one, only one k can give m as output, hence \(m = f(k)\).
+    
+    \(\implies k \in A \wedge k \in B\)
+    
+    \(\implies k \in (A \cap B)\)
+    
+    \(\implies m \in f(A \cap B)\)
+    
+    \(\implies f(A) \cap f(B) \subseteq f(A \cap B)\)
+    
+    Therefore, \(f(A \cap B) = f(A) \cap f(B)\).
+    
+    \vspace{5 mm}
+    
+    Suppose, \(f(A \cap B) = f(A) \cap f(B)\), and \(f\) is a many-one function.
+    
+    Let \(a \in A\) and \(b\in B\) where A and B are singleton sets, such that \( a \neq b\) but, \(f(a) = f(b) = x\).(possible assumption as f is a many-one function)
+    
+    As \(x = f(a)\) where, \(a \in A\), \( x\in f(A)\) and \(x = f(b)\) where, \(b \in A\), \( x\in f(B)\)
+    
+    \(\implies x \in f(A) \wedge x \in f(B)\)
+    
+    \(\implies x \in f(A) \cap f(B)\)
+    
+    \(\implies x \in f(A \cap B)\) {as, \(f(A \cap B) = f(A) \cap f(B)\)}
+    
+    as x = f(a) = f(b), if \(x \in f(A \cap B)\), then either a or b must be in \(A\cap B\), for that to happen, a should have been equal to b. \(a = b\) which contradicts our previous assumption that, \(a \neq b\).
+    
+    hence, our assumption that f is many-one is wrong. 
+    For singleton sets with unequal elements its wrong. So, universally \(f\) is not one-one, is a wrong assumption.
+    
+    Hence, \(f\) is one-one.
+    
+    Therefore, we have proven that the 2 statements are equivalent.
+
+\end{Solution}
+\newpage
+\section{Question 7}
+\begin{Problem}
+    for an arbitrary function, \(f: X \rightarrow Y\), prove the following identities:
+    \begin{enumerate}
+        \item \(f^{-1}(\bigcup_{i\in I} B_i) = \bigcup_{i\in I} f^{-1}(B_i)\)
+        \item \(f^{-1}(\bigcap_{i\in I} B_i) = \bigcap_{i\in I} f^{-1}(B_i)\)
+        \item \(f^{-1}(B^c) = [f^{-1}(B)]^c\)
+    \end{enumerate}
+\end{Problem}
+
+\begin{Solution}(a)
+
+    A function \(f\) has an inverse function only if it is bijective. \(f^{-1}\) is the representation of the inverse function of \(f\) and is represented in set notation as:
+    
+    \(f(X_i) = \{\, f(x) \in Y \mid x\in X_i\}\)
+    
+    \(f^{-1}(X_i) = \{\, x \in X_i \mid f(x) \in Y\}\) 
+    
+    Let \((B_1, B_2, \ldots, B_i, \ldots)\), represent all possible subsets of the codomain Y of function \(f\), as Y would be the domain of the inverse function. 
+    
+    \(\Rightarrow f^{-1}[\bigcup_{i\in I}B_i] = \{\, x \in X \mid f(x) \in \bigcup_{i\in I}B_i \}\) {By definition of inverse functions}
+    
+    \(\Rightarrow \{\, x\in X \mid \exists i \in I\) such that \(f(x) \in B_i\}\) {By definition of the union}
+    
+    \(\Rightarrow \exists i \in I, \bigcup \{\, x\in X \mid f(x) \in B_i\}\)
+    
+    \(\Rightarrow \bigcup_{i \in I} \{\, x \in X \mid f(x) \in B_i \}\) {By definition of the union}
+    
+    \(\Rightarrow \bigcup_{i\in I} f^{-1}(B_i)\) {By definition of inverse functions}
+    
+    \vspace{5mm}
+    
+    Alternate Solution for 1st problem:
+    
+    Let \(a \in f^{-1}[\bigcup_{i\in I}B_i]\),
+    
+    \(\implies f(a) \in [\bigcup_{i\in I}B_i]\), {Definition of inverse function}
+    
+    \(\implies f(a) \in B_1 \vee f(a) \in B_2 \ldots \vee f(a) \in B_i\)
+    
+    \(\implies a \in f^{-1}(B_1) \vee a \in f^{-1}(B_2) \ldots \vee a \in f^{-1}(B_i)\)
+    
+    \(\implies a \in (\bigcup_{i \in I} f^{-1}(B_i))\)
+    
+    Hence, \(f^{-1}[\bigcup_{i\in I}B_i] \subseteq (\bigcup_{i \in I} f^{-1}(B_i))\)
+    
+    \vspace{3mm}
+    
+    Let \(a \in (\bigcup_{i \in I} f^{-1}(B_i))\)
+    
+    \(\implies a \in f^{-1}(B_1) \vee a \in f^{-1}(B_2) \ldots \vee a \in f^{-1}(B_i)\)
+    
+    \(\implies f(a) \in B_1 \vee f(a) \in B_2 \ldots \vee f(a) \in B_i\)
+    
+    \(\implies f(a) \in [\bigcup_{i\in I}B_i]\), {Definition of inverse function}
+    
+    \(\implies a \in f^{-1}[\bigcup_{i\in I}B_i]\)
+    
+    Hence, \((\bigcup_{i \in I} f^{-1}(B_i)) \subseteq f^{-1}[\bigcap_{i\in I}B_i] \).
+    
+    Therefore, \(f^{-1}(\bigcup_{i\in I} B_i) = \bigcup_{i\in I} f^{-1}(B_i)\).
+    
+\end{Solution}
+
+\vspace{5mm}
+
+\begin{Solution}
+    (b)
+    
+    Let \(a \in f^{-1}[\bigcap_{i\in I}B_i]\),
+    
+    \(\implies f(a) \in [\bigcap_{i\in I}B_i]\), {Definition of inverse function}
+    
+    \(\implies f(a) \in B_1 \wedge f(a) \in B_2 \ldots \wedge f(a) \in B_i\)
+    
+    \(\implies a \in f^{-1}(B_1) \wedge a \in f^{-1}(B_2) \ldots \wedge a \in f^{-1}(B_i)\)
+    
+    \(\implies a \in (\bigcap_{i \in I} f^{-1}(B_i))\)
+    
+    Hence, \(f^{-1}[\bigcap_{i\in I}B_i] \subseteq (\bigcap_{i \in I} f^{-1}(B_i))\)
+    
+    \vspace{3mm}
+    
+    Let \(a \in (\bigcap_{i \in I} f^{-1}(B_i))\)
+    
+    \(\implies a \in f^{-1}(B_1) \wedge f^{-1}(B_2) \ldots \wedge f^{-1}(B_i)\)
+    
+    \(\implies f(a) \in B_1 \wedge f(a) \in B_2 \ldots \wedge f(a) \in B_i\)
+    
+    \(\implies f(a) \in [\bigcap_{i\in I}B_i]\), {Definition of inverse function}
+    
+    \(\implies a \in f^{-1}[\bigcap_{i\in I}B_i]\)
+    
+    Hence, \((\bigcap_{i \in I} f^{-1}(B_i)) \subseteq f^{-1}[\bigcap_{i\in I}B_i] \).
+    
+    Therefore, \(f^{-1}(\bigcap_{i\in I} B_i) = \bigcap_{i\in I} f^{-1}(B_i)\).
+    
+\end{Solution}
+\vspace{5mm}
+
+\begin{Solution}
+    (c)
+    
+    Let \( a \in f^{-1}(B^c)\),
+    
+    \(\implies f(a) \in (B^c)\), {Definition of inverse function}
+    
+    \(\implies f(a) \not\in (B) \), {Definition of complement}
+    
+    \(\implies a \not\in f^{-1}(B)\), {Definition of inverse function}
+    
+    \(\implies a \in (f^{-1}(B))^c)\), {Definition of complement}
+    
+    Hence, \( f^{-1}(B^c) \subseteq (f^{-1}(B))^c\).
+    
+    \vspace{5mm}
+    
+    Let \(a \in (f^{-1}(B))^c)\),
+    
+    \(\implies a \not\in f^{-1}(B)\), {Definition of inverse function}
+    
+    \(\implies f(a) \not\in (B) \), {Definition of complement}
+    
+    \(\implies f(a) \in (B^c)\), {Definition of inverse function}
+    
+    \(\implies a \in f^{-1}(B^c)\),
+    
+    Hence, \( (f^{-1}(B))^c \subseteq f^{-1}(B^c)\).
+    
+    Therefore, \(f^{-1}(B^c) = [f^{-1}(B)]^c\).
+    
+\end{Solution}
+
+\end{document}
